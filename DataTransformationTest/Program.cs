@@ -1,17 +1,17 @@
-﻿using System;
+﻿using DataTransformationTest.FileRead;
+using System;
 using System.IO;
 
 namespace DataTransformationTest
 {
     class Program
     {
-        public static readonly string inputFileFolder = "C:\\Temp\\Data\\";
 
         static void Main(string[] args)
         {
-            string inputFile = inputFileFolder + "SampleInputFile.txt";
-            if (File.Exists(inputFile)) {
-                var inputText = File.ReadAllText(inputFile);
+            TextFileReader inputFileReader = new TextFileReader();
+            string inputText = inputFileReader.ReadInputFileToString();
+            if (inputText != null) {
                 Console.WriteLine(inputText);
                 Console.Write("Press any key to continue...");
                 Console.ReadKey(true);
