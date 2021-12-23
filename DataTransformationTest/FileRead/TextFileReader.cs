@@ -19,7 +19,7 @@ namespace DataTransformationTest.FileRead
             {
                 return File.ReadAllText(inputFile);
             }
-            return null;
+            throw new Exception("Error reading input file.");
         }
     }
 }

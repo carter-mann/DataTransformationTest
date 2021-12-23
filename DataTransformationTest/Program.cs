@@ -1,5 +1,5 @@
 ﻿using DataTransformationTest.FileRead;
-using DataTransformationTest.StringParser;
+using DataTransformationTest.Parser;
 using System;
 using System.IO;
 
@@ -12,10 +12,11 @@ namespace DataTransformationTest
         {
             Console.WriteLine("Reading Input File...");
             TextFileReader inputFileReader = new TextFileReader();
-            PersonStringParser parser = new PersonStringParser();
-            string inputText = inputFileReader.ReadInputFileToString();
-            if (inputText != null)
+            FileStringParser parser = new FileStringParser();
+
+            try
             {
+                string inputText = inputFileReader.ReadInputFileToString();
                 Console.WriteLine("File Read Successful.");
                 Console.WriteLine("Beginning Parse of Contents...");
                 string parserOutput = parser.Parse(inputText);
@@ -23,9 +24,10 @@ namespace DataTransformationTest
                 Console.WriteLine(parserOutput);
                 Console.Write("Press any key to continue...");
                 Console.ReadKey(true);
-            } else
+            } catch (Exception ex)
             {
-                Console.WriteLine("File read unsuccessful.");
+                Console.WriteLine("Invalid data, unable to process.");
+                Console.WriteLine(ex.Message);
                 Console.Write("Press any key to continue...");
                 Console.ReadKey(true);
             }
