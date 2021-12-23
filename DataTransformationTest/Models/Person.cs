@@ -25,7 +25,29 @@ namespace DataTransformationTest.Models
             outputBuilder.Append(FirstName)
                 .Append(' ')
                 .Append(LastName)
-                .Append(isFemale ? "Female" : "Male")
+                .Append(" [");
+            if (Age != null)
+            {
+                outputBuilder.Append(Age)
+                    .Append(", ");
+            }
+            outputBuilder.Append(isFemale ? "Female" : "Male")
+                .Append("]")
+                .AppendLine();
+            outputBuilder.Append("City : ")
+                .Append(City)
+                .AppendLine();
+            if (State != null)
+            {
+                outputBuilder.Append("State : ")
+                    .Append(State)
+                .AppendLine();
+            }
+            outputBuilder.Append("Student : ")
+                .Append(isStudent ? "Yes" : "No")
+                .AppendLine();
+            outputBuilder.Append("Employee : ")
+                .Append(isEmployee ? "Yes" : "No")
                 .AppendLine();
 
             return outputBuilder.ToString();

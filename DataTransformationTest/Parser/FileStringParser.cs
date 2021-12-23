@@ -28,10 +28,8 @@ namespace DataTransformationTest.Parser
             bool hasFlags = false;
             bool buildingPerson = true;
             foreach (string line in inputLines) {
-                Console.WriteLine(line);
                 if (line.StartsWith('(') && line.Contains(')'))
                 {
-                    Console.WriteLine("new line " + buildingPerson);
                     if (buildingPerson == false)
                     {
                         buildingPerson = true;
@@ -69,13 +67,11 @@ namespace DataTransformationTest.Parser
                         hasCity = false;
                         hasFlags = false;
                         buildingPerson = false;
-                        Console.WriteLine("person built");
                     } else if (!buildingPerson)
                     {
                         continue;
                     } else
                     {
-                        Console.WriteLine(hasName.ToString() + hasCity.ToString() + hasFlags.ToString());
                         throw new ParserException("Invalid Values for Person");
                     }
                 }
